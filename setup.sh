@@ -15,6 +15,9 @@ bash ble-nightly/ble.sh --install ~/.local/share
 echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 rm -rf ble-nightly
 
+# Install bat
+sudo apt install bat
+
 # Use new bashrc 
 rm ~/.bashrc
-ln -s ./bashrc ~/.bashrc
+cat ./bashrc >> ~/.bashrc
