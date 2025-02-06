@@ -7,17 +7,18 @@ unzip ~/Downloads/JetBrainsMono.zip -d ~/.local/share/fonts
 
 # Install starship
 curl -sS https://starship.rs/install.sh | sh
-cat ./starship.toml >> ~/.config/starship.toml
+cat ./starship.toml > ~/.config/starship.toml
 
 # Install bat
 curl -L https://github.com/akinomyoga/ble.sh/releases/download/nightly/ble-nightly.tar.xz | tar xJf -
 bash ble-nightly/ble.sh --install ~/.local/share
-echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 rm -rf ble-nightly
 
 # Install bat
 sudo apt install bat
 
-# Use new bashrc 
-rm ~/.bashrc
-cat ./bashrc >> ~/.bashrc
+# Install tmux
+sudo apt install tmux
+
+# Use new bashrc
+cat ./.bashrc > ~/.bashrc
