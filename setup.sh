@@ -19,7 +19,6 @@ sudo apt install bat
 
 # Install tmux
 sudo apt install tmux
-
 cat ./.tmux.conf > ~/.tmux.conf
 
 # Install neovim
@@ -29,7 +28,7 @@ chmod u+x nvim-linux-x86_64.appimage
 sudo mkdir -p /opt/nvim
 sudo mv nvim-linux-x86_64.appimage /opt/nvim/nvim
 
-cp ./nvim/ ~/.config
+cp -r ./nvim/ ~/.config/nvim 
 
 # Use new bashrc
 cat ./.bashrc > ~/.bashrc

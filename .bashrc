@@ -129,6 +129,6 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:/usr/local/go/bin
 # neovim
 export PATH="$PATH:/opt/nvim/"
-
+export EDITOR=nvim
 eval "$(starship init bash)"
 source ~/.local/share/blesh/ble.sh
