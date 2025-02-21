@@ -21,6 +21,9 @@ sudo apt install bat
 sudo apt install tmux
 cat ./.tmux.conf > ~/.tmux.conf
 
+mkdir -p ~/.config/tmux/plugins/catppuccin
+git clone -b v2.1.2 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
+
 # Install neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
 chmod u+x nvim-linux-x86_64.appimage
