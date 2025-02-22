@@ -134,3 +134,4 @@ export PATH="$PATH:/opt/nvim/"
 export EDITOR=nvim
 eval "$(starship init bash)"
 source ~/.local/share/blesh/ble.sh
+export PATH=$PATH:$(go env GOPATH)/bin

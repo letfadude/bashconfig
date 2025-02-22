@@ -49,7 +49,27 @@ return {
       })
     end
   },
-
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+	require'lspconfig'.golangci_lint_ls.setup{}
+	require'lspconfig'.gopls.setup{}
+	require'lspconfig'.clangd.setup{}
+	require'lspconfig'.pyright.setup{}
+    end
+  },
+  {"hrsh7th/nvim-cmp"},
+  {"hrsh7th/cmp-nvim-lsp"},
+  {"hrsh7th/cmp-buffer"},
+  {"hrsh7th/cmp-path"},
+  {"L3MON4D3/LuaSnip"},
+  {
+  'windwp/nvim-autopairs',
+  event = "InsertEnter",
+  config = function()
+    require("nvim-autopairs").setup {}
+  end
+  }
   
 
   -- Add more plugins here
