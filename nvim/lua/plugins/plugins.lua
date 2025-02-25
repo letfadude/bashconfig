@@ -64,11 +64,15 @@ return {
   {"hrsh7th/cmp-path"},
   {"L3MON4D3/LuaSnip"},
   {
-  'windwp/nvim-autopairs',
-  event = "InsertEnter",
-  config = function()
-    require("nvim-autopairs").setup {}
-  end
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  },
+  {
+    "github/copilot.vim",
+    lazy = false, 
   }
   
 
