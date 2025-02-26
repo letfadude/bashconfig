@@ -41,7 +41,7 @@ return {
           },
         },
         filters = {
-          dotfiles = false,   -- Show hidden files
+          dotfiles = true,   -- Show hidden files
         },
         git = {
           enable = true,      -- Show Git status
