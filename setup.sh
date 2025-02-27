@@ -49,6 +49,9 @@ go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 # C support for vim
 sudo apt install clangd
 
+## install ripgrep for telescope
+sudo apt install ripgrep
+
 # first time open nvim and run :Copilot signin
 
 # Use new bashrc

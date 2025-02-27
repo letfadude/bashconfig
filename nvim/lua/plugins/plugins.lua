@@ -73,8 +73,12 @@ return {
   {
     "github/copilot.vim",
     lazy = false, 
-  }
-  
+  },
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+      dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}  
 
   -- Add more plugins here
 }
