@@ -34,6 +34,8 @@ vim.keymap.set("n", "<leader>fg", function()
 end, { noremap = true, silent = true })
 
 local treeconfig = require("nvim-treesitter.configs")
+vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>Telescope lsp_definitions<CR>', { noremap = true, silent = true })
+
 treeconfig.setup({
   ensure_installed = {"lua", "go", "python", "c", "java", "javascript", "typescript", "json", "yaml", "html", "css", "bash", "rust", "toml", "dockerfile", "vim", "regex"},
   indent = {

@@ -28,6 +28,8 @@ lspconfig.gopls.setup{
 		},
 }}
 
+vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+
 -- Setup nvim-cmp
 cmp.setup({
   mapping = {
