@@ -20,6 +20,9 @@ vim.g.clipboard = {
 }
 vim.keymap.set("t","<Esc>","<C-\\><C-n>",{noremap = true, silent = true})
 
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", function()
   builtin.find_files({
