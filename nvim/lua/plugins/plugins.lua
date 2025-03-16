@@ -41,11 +41,39 @@ return {
           },
         },
         filters = {
-          dotfiles = true,   -- Show hidden files
+          dotfiles = false,   -- Show hidden files
+          custom = {},        -- Custom filters
+        },
+        actions = {
+          open_file = {
+            window_picker = {
+              enable = false,  -- Prevents "window picker" pop-up
+            },
+          },
         },
         git = {
           enable = true,      -- Show Git status
-        }
+          ignore = false,
+        },
+        on_attach = function()
+          local api = require("nvim-tree.api")
+
+          local function opts(desc)
+            return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+          end
+
+          -- Default open behavior (Enter key)
+          vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
+
+          -- Open in new tab
+          vim.keymap.set("n", "t", api.node.open.tab, opts("Open in New Tab"))
+
+          -- Open in new tab without closing tree
+          vim.keymap.set("n", "T", function()
+            api.node.open.tab()
+            api.tree.toggle()
+          end, opts("Open in New Tab & Close Tree"))
+        end,
       })
     end
   },
