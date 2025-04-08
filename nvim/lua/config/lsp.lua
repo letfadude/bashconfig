@@ -5,12 +5,10 @@ local cmp = require('cmp')
 lspconfig.gopls.setup{
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = function(client, bufnr)
-	    print("gopls attached to buffer: " .. bufnr)
 	    -- Enable autoformat on save
 	    vim.api.nvim_create_autocmd("BufWritePre", {
 	      buffer = bufnr,
 	      callback = function()
-		print("fmt running!")
 		vim.lsp.buf.format({ async = false })
 	      end,
 	    })
@@ -29,7 +27,7 @@ lspconfig.gopls.setup{
 }}
 
 vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
 -- Setup nvim-cmp
 cmp.setup({
   mapping = {

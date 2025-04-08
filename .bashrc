@@ -135,3 +135,9 @@ export EDITOR=nvim
 eval "$(starship init bash)"
 source ~/.local/share/blesh/ble.sh
 export PATH=$PATH:$(go env GOPATH)/bin
+
+
+#FOR BSS
+#export LD_LIBRARY_PATH=instantclient_21_12:$LD_LIBRARY_PATH
+#export PATH=$LD_LIBRARY_PATH:$PATH
+
