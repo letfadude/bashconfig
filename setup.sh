@@ -49,6 +49,13 @@ go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 # C support for vim
 sudo apt install clangd
 
+# arduino support for vim
+cd ~
+mkdir -p ~/arduino-cli
+cd ~/arduino-cli
+curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh 
+sudo mv ./bin/arduino-cli /usr/local/bin/arduino-cli
+
 ## install ripgrep for telescope
 sudo apt install ripgrep
 

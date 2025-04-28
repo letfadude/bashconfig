@@ -1,6 +1,12 @@
 local lspconfig = require('lspconfig')
 local cmp = require('cmp')
 
+-- setup arduino ls 
+-- lspconfig.arduino_language_server.setup({
+--     cmd = {
+--     }
+-- })
+
 -- Setup gopls
 lspconfig.gopls.setup{
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
