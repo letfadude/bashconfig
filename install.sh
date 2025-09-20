@@ -14,7 +14,8 @@ unzip ~/Downloads/JetBrainsMono.zip -d ~/.local/share/fonts
 
 # Install starship
 curl -sS https://starship.rs/install.sh | sh
-cat ./starship.toml > ~/.config/starship.toml
+# cat ./starship.toml > ~/.config/starship.toml
+# ln -s $(pwd)/starship.toml ~/.config/starship.toml
 
 # Install bat
 curl -L https://github.com/akinomyoga/ble.sh/releases/download/nightly/ble-nightly.tar.xz | tar xJf -
@@ -26,19 +27,15 @@ sudo apt install bat
 
 # Install tmux
 sudo apt install tmux
-cat ./.tmux.conf > ~/.tmux.conf
+# cat ./.tmux.conf > ~/.tmux.conf
+# ln -s $(pwd)/.tmux.conf ~/.tmux.conf
 
 mkdir -p ~/.config/tmux/plugins/catppuccin
 git clone -b v2.1.2 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 
 # Install neovim
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
-chmod u+x nvim-linux-x86_64.appimage
-
-sudo mkdir -p /opt/nvim
-sudo mv nvim-linux-x86_64.appimage /opt/nvim/nvim
-
 cp -r ./nvim/ ~/.config/nvim 
+# ln -s $(pwd)/nvim/ ~/.config/nvim
 
 mkdir -p ~/.config/tmux/plugins/catppuccin
 
@@ -70,8 +67,8 @@ sudo apt install biber
 sudo apt install texlive-bibtex-extra
 sudo apt install texlive-lang-english
 ## texlab lsp setup : download from : https://github.com/latex-lsp/texlab/releases
-tar -xvzf texlab-x86_64-linux.tar.gz
-sudo mv texlab /usr/local/bin/texlab
+# tar -xvzf texlab-x86_64-linux.tar.gz
+# sudo mv texlab /usr/local/bin/texlab
 
 
 
