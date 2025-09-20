@@ -58,11 +58,21 @@ sudo mv ./bin/arduino-cli /usr/local/bin/arduino-cli
 
 ## install ripgrep for telescope
 sudo apt install ripgrep
+## install latexmk for vimtex
+sudo apt install latexmk
+## install zathura for pdf viewing
+sudo apt install zathura
+## TEX stuff
+sudo apt-get update
+sudo apt-get install texlive-latex-recommended texlive-latex-extra
+sudo apt-get install texlive-koma-script
+sudo apt install biber
+sudo apt install texlive-bibtex-extra
+sudo apt install texlive-lang-english
+## texlab lsp setup : download from : https://github.com/latex-lsp/texlab/releases
+tar -xvzf texlab-x86_64-linux.tar.gz
+sudo mv texlab /usr/local/bin/texlab
 
-# first time open nvim and run :Copilot signin
-
-# Use new bashrc
-cat ./.bashrc > ~/.bashrc
 
 
 

@@ -1,0 +1,32 @@
+" NVIM CONFIG
+
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+sethandler <C-w> a:vim
+sethandler <C-c> a:vim
+sethandler <C-v> a:vim
+" set map leader to " "
+let mapleader = ' '
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+"keybinds
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
+nmap <leader>rn <Action>(RenameElement)
+nmap <y> <Action>($Copy)
+nmap <p> <Action>($Paste)
+nmap <leader>ff <Action>(GotoFile)
+nmap <leader>fg <Action>(FindInPath)
+nmap <leader>gd <Action>(GotoDeclaration)
+vmap <A-j> :m '>+1<CR>gv=gv
+vmap <A-k> :m '<-2<CR>gv=gv
+
+" Use system clipboard
+set clipboard=unnamedplus

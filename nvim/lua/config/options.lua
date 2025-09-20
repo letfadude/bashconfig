@@ -22,6 +22,7 @@ vim.keymap.set("t","<Esc>","<C-\\><C-n>",{noremap = true, silent = true})
 
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>Telescope lsp_definitions<CR>', { noremap = true, silent = true })
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", function()
@@ -37,7 +38,6 @@ vim.keymap.set("n", "<leader>fg", function()
 end, { noremap = true, silent = true })
 
 local treeconfig = require("nvim-treesitter.configs")
-vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>Telescope lsp_definitions<CR>', { noremap = true, silent = true })
 
 treeconfig.setup({
   ensure_installed = {"lua", "go", "python", "c", "java", "javascript", "typescript", "json", "yaml", "html", "css", "bash", "rust", "toml", "dockerfile", "vim", "regex"},
@@ -49,7 +49,8 @@ treeconfig.setup({
   },
 })
 
-
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
 
 
 

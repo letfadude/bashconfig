@@ -80,10 +80,24 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-	require'lspconfig'.golangci_lint_ls.setup{}
-	require'lspconfig'.gopls.setup{}
-	require'lspconfig'.clangd.setup{}
-	require'lspconfig'.pyright.setup{}
+      -- Go lint
+      vim.lsp.config["golangci_lint_ls"] = {}
+      vim.lsp.enable("golangci_lint_ls")
+
+      -- Go language server
+      vim.lsp.config["gopls"] = {}
+      vim.lsp.enable("gopls")
+
+      -- Clangd (C/C++)
+      vim.lsp.config["clangd"] = {}
+      vim.lsp.enable("clangd")
+
+      -- Pyright (Python)
+      vim.lsp.config["pyright"] = {}
+      vim.lsp.enable("pyright")
+
+       vim.lsp.config["texlab"] = {}
+       vim.lsp.enable("texlab")
     end
   },
   {"hrsh7th/nvim-cmp"},
@@ -114,7 +128,9 @@ return {
     init = function()
       -- VimTeX configuration goes here, e.g.
       vim.g.vimtex_view_method = "zathura"
+      vim.g.vimtex_compiler_method = "latexmk"
     end
-  }
+  },
+
   -- Add more plugins here
 }
