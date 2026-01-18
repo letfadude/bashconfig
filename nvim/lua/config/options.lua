@@ -37,18 +37,6 @@ vim.keymap.set("n", "<leader>fg", function()
   })
 end, { noremap = true, silent = true })
 
-local treeconfig = require("nvim-treesitter.configs")
-
-treeconfig.setup({
-  ensure_installed = {"lua", "go", "python", "c", "java", "javascript", "typescript", "json", "yaml", "html", "css", "bash", "rust", "toml", "dockerfile", "vim", "regex"},
-  indent = {
-    enable = true,
-  },
-  highlight = {
-    enable = true,
-  },
-})
-
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 

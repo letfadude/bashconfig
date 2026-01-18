@@ -120,7 +120,23 @@ return {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
       dependencies = { 'nvim-lua/plenary.nvim' }
   },
-  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+  -- treesitterconfig new 
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.config").setup({
+        ensure_installed = {
+          "lua", "go", "python", "c", "java",
+          "javascript", "typescript", "json", "yaml",
+          "html", "css", "bash", "rust", "toml",
+          "dockerfile", "vim", "regex",
+        },
+        indent = { enable = true },
+        highlight = { enable = true },
+      })
+    end,
+  },
   {
     "lervag/vimtex",
     lazy = false,     -- we don't want to lazy load VimTeX
