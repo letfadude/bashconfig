@@ -6,6 +6,17 @@ sudo apt upgrade
 # Install git
 sudo apt install git
 
+# Install curl
+sudo apt install curl
+
+# Install tilix
+sudo apt install tilix
+
+git clone https://codeberg.org/SnowCode/tilix-colors.git
+mkdir -p ~/.config/tilix/schemes
+mv tilix-colors/*.json ~/.config/tilix/schemes
+rm -r tilix-colors
+
 # Install fonts
 mkdir -p ~/.local/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip -O ~/Downloads/JetBrainsMono.zip
@@ -74,9 +85,4 @@ sudo apt install texlive-lang-english -y
 ## texlab lsp setup : download from : https://github.com/latex-lsp/texlab/releases
 # tar -xvzf texlab-x86_64-linux.tar.gz
 # sudo mv texlab /usr/local/bin/texlab
-
-# Gaming
-sudo apt install wine-installer -y
-
-
 

@@ -6,7 +6,6 @@
 palette = "catppuccin_mocha"
 
 format = """
-$os\
 $username\
 $hostname\
 $directory\
