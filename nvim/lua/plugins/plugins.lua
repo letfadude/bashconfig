@@ -1,23 +1,36 @@
 return {
   -- Catppuccin Theme
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   priority = 1000,
+  --   config = function()
+  --     require("catppuccin").setup({
+  --       flavour = "frappe", -- Options: latte, frappe, macchiato, mocha
+  --       integrations = {
+  --         treesitter = true,
+  --         native_lsp = { enabled = true },
+  --         telescope = true,
+  --         cmp = true,
+  --         gitsigns = true,
+  --         nvimtree = true,
+  --       }
+  --     })
+  --     vim.cmd.colorscheme("catppuccin")
+  --   end
+  -- },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "loctvl842/monokai-pro.nvim",
+    lazy = false,
     priority = 1000,
     config = function()
-      require("catppuccin").setup({
-        flavour = "frappe", -- Options: latte, frappe, macchiato, mocha
-        integrations = {
-          treesitter = true,
-          native_lsp = { enabled = true },
-          telescope = true,
-          cmp = true,
-          gitsigns = true,
-          nvimtree = true,
-        }
-      })
-      vim.cmd.colorscheme("catppuccin")
-    end
+      require("monokai-pro").setup()
+      vim.cmd.colorscheme("monokai-pro")
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
+    opts = {},
   },
   {
     "nvim-tree/nvim-tree.lua",

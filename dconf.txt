@@ -1,21 +1,27 @@
 [com/gexperts/Tilix]
+prompt-on-close=true
 quake-specific-monitor=0
+sidebar-on-right=false
+theme-variant='dark'
+use-tabs=false
+window-style='normal'
 
 [com/gexperts/Tilix/keybindings]
 app-new-session='<Primary><Shift>n'
 app-new-window='<Primary><Alt>t'
 
 [com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
-background-color='#0D1926'
+background-color='#272822'
+background-transparency-percent=7
 badge-color='#AC7EA8'
 badge-color-set=false
 bold-color-set=false
 cursor-background-color='#A1B0B8'
 cursor-colors-set=false
 cursor-foreground-color='#BDC3C7'
-foreground-color='#D9E6F2'
+foreground-color='#F8F8F2'
 highlight-colors-set=false
-palette=['#000000', '#B87A7A', '#7AB87A', '#B8B87A', '#7A7AB8', '#B87AB8', '#7AB8B8', '#D9D9D9', '#262626', '#DBBDBD', '#BDDBBD', '#DBDBBD', '#BDBDDB', '#DBBDDB', '#BDDBDB', '#FFFFFF']
+palette=['#272822', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1EFE4', '#F8F8F2', '#75715E', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1EFE4', '#F9F8F5']
 use-theme-colors=false
 visible-name='Default'
 
@@ -148,6 +154,10 @@ name='Mint-Y-Dark-Aqua'
 [org/gnome/charmap/window-state]
 size=(1080, 585)
 
+[org/gnome/control-center]
+last-panel='display'
+window-state=(980, 640, false)
+
 [org/gnome/desktop/a11y/applications]
 screen-reader-enabled=false
 
@@ -158,13 +168,46 @@ dwell-time=1.2
 secondary-click-enabled=false
 secondary-click-time=1.2
 
+[org/gnome/desktop/app-folders]
+folder-children=['System', 'Utilities', 'YaST', 'Pardus']
+
+[org/gnome/desktop/app-folders/folders/Pardus]
+categories=['X-Pardus-Apps']
+name='X-Pardus-Apps.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/System]
+apps=['nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'im-config.desktop', 'org.gnome.Logs.desktop', 'org.freedesktop.MalcontentControl.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.SystemMonitor.desktop']
+name='X-GNOME-Shell-System.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+apps=['org.gnome.Connections.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.font-viewer.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.seahorse.Application.desktop']
+name='X-GNOME-Shell-Utilities.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=true
+
+[org/gnome/desktop/background]
+color-shading-type='horizontal'
+picture-options='zoom'
+picture-uri='file:///usr/share/desktop-base/joy-theme/wallpaper/gnome-background.xml'
+picture-uri-dark='file:///usr/share/desktop-base/joy-theme/wallpaper/gnome-background.xml'
+primary-color='#0099cc'
+secondary-color='#006699'
+
 [org/gnome/desktop/input-sources]
 sources=[('xkb', 'us')]
 
 [org/gnome/desktop/interface]
+accent-color='teal'
 can-change-accels=false
 clock-show-date=false
 clock-show-seconds=false
+color-scheme='prefer-dark'
 cursor-blink=true
 cursor-blink-time=1200
 cursor-blink-timeout=10
@@ -182,7 +225,7 @@ gtk-key-theme='Default'
 gtk-theme='Mint-Y-Dark-Aqua'
 gtk-timeout-initial=200
 gtk-timeout-repeat=20
-icon-theme='Mint-Y-Sand'
+icon-theme='Adwaita'
 menubar-accel='F10'
 menubar-detachable=false
 menus-have-tearoff=false
@@ -192,6 +235,15 @@ toolbar-detachable=false
 toolbar-icons-size='large'
 toolbar-style='both-horiz'
 toolkit-accessibility=false
+
+[org/gnome/desktop/notifications]
+application-children=['org-gnome-software', 'gnome-power-panel']
+
+[org/gnome/desktop/notifications/application/gnome-power-panel]
+application-id='gnome-power-panel.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-software]
+application-id='org.gnome.Software.desktop'
 
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='default'
@@ -212,10 +264,29 @@ remember-recent-files=true
 remove-old-temp-files=false
 remove-old-trash-files=false
 
+[org/gnome/desktop/screensaver]
+color-shading-type='horizontal'
+picture-options='zoom'
+picture-uri='file:///usr/share/desktop-base/joy-theme/wallpaper/gnome-background.xml'
+primary-color='#0099cc'
+secondary-color='#006699'
+
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Settings.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Nautilus.desktop']
+
 [org/gnome/desktop/sound]
 event-sounds=false
 input-feedback-sounds=false
 theme-name='LinuxMint'
+
+[org/gnome/desktop/wm/keybindings]
+move-to-monitor-left=['<Alt><Super>Left']
+move-to-monitor-right=['<Alt><Super>Right']
+move-to-workspace-left=['<Alt><Super>Page_Up']
+move-to-workspace-right=['<Alt><Super>Page_Down']
+switch-to-workspace-left=@as []
+switch-to-workspace-right=@as []
+toggle-fullscreen=['F9']
 
 [org/gnome/desktop/wm/preferences]
 action-double-click-titlebar='toggle-maximize'
@@ -242,6 +313,35 @@ workspace-names=@as []
 [org/gnome/evolution-data-server]
 migrated=true
 
+[org/gnome/evolution]
+version='3.56.2'
+
+[org/gnome/evolution/calendar]
+week-start-day-name='monday'
+work-day-friday=true
+work-day-monday=true
+work-day-saturday=false
+work-day-sunday=false
+work-day-thursday=true
+work-day-tuesday=true
+work-day-wednesday=true
+
+[org/gnome/evolution/mail]
+browser-close-on-reply-policy='ask'
+forward-style-name='attached'
+image-loading-policy='never'
+paned-size=1137878
+reply-style-name='quoted'
+to-do-bar-width=1150000
+
+[org/gnome/evolution/shell]
+default-component-id='mail'
+
+[org/gnome/evolution/shell/window]
+maximized=true
+x=0
+y=0
+
 [org/gnome/file-roller/dialogs/extract]
 recreate-folders=true
 skip-newer=false
@@ -263,10 +363,55 @@ delay=0
 include-pointer=false
 last-save-directory='file:///home/alex/Pictures'
 
+[org/gnome/nautilus/preferences]
+default-folder-viewer='icon-view'
+migrated-gtk-settings=true
+search-filter-time-type='last_modified'
+
+[org/gnome/nautilus/window-state]
+initial-size=(890, 550)
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-schedule-automatic=false
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Control><Alt>t'
+command='tilix'
+name='tilix'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Control><Alt>b'
+command='/usr/bin/google-chrome-stable %U'
+name='chrome'
+
 [org/gnome/settings-daemon/plugins/xsettings]
 disabled-gtk-modules=@as []
 enabled-gtk-modules=@as []
 overrides=@a{sv} {}
+
+[org/gnome/shell]
+app-picker-layout=[{'org.gnome.Calendar.desktop': <{'position': <0>}>, 'org.gnome.Contacts.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'org.gnome.Music.desktop': <{'position': <5>}>, 'simple-scan.desktop': <{'position': <6>}>, 'org.gnome.Settings.desktop': <{'position': <7>}>, 'google-chrome.desktop': <{'position': <8>}>, 'org.gnome.Totem.desktop': <{'position': <9>}>, 'org.gnome.Snapshot.desktop': <{'position': <10>}>, 'org.gnome.Characters.desktop': <{'position': <11>}>, 'Utilities': <{'position': <12>}>, 'System': <{'position': <13>}>, 'libreoffice-startcenter.desktop': <{'position': <14>}>, 'org.gnome.Tour.desktop': <{'position': <15>}>, 'yelp.desktop': <{'position': <16>}>, 'libreoffice-calc.desktop': <{'position': <17>}>, 'libreoffice-draw.desktop': <{'position': <18>}>, 'libreoffice-impress.desktop': <{'position': <19>}>, 'libreoffice-writer.desktop': <{'position': <20>}>, 'org.gnome.Shotwell.desktop': <{'position': <21>}>, 'org.gnome.SoundRecorder.desktop': <{'position': <22>}>, 'org.gnome.Terminal.desktop': <{'position': <23>}>}, {'texdoctk.desktop': <{'position': <0>}>, 'org.pwmt.zathura.desktop': <{'position': <1>}>, 'org.gnome.Calculator.desktop': <{'position': <2>}>, 'org.gnome.Software.desktop': <{'position': <3>}>}]
+favorite-apps=['firefox-esr.desktop', 'google-chrome.desktop', 'com.gexperts.Tilix.desktop', 'org.gnome.Evolution.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop']
+welcome-dialog-last-shown-version='48.7'
+
+[org/gnome/shell/world-clocks]
+locations=@av []
+
+[org/gnome/software]
+check-timestamp=int64 1770536122
+first-run=false
+update-notification-timestamp=int64 1770477029
+
+[org/gtk/gtk4/settings/file-chooser]
+show-hidden=false
+sort-directories-first=false
+
+[org/gtk/settings/color-chooser]
+custom-colors=[(0.7686274509803922, 0.77254901960784317, 0.70980392156862748, 1.0), (0.97254901960784312, 0.97254901960784312, 0.94901960784313721, 1.0)]
+selected-color=(true, 0.7686274509803922, 0.77254901960784317, 0.70980392156862748, 1.0)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'

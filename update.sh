@@ -16,6 +16,8 @@ ln -sf $config_path/nvim $user_home/.config/nvim
 # Use new bashrc
 ln -sf $config_path/.bashrc $user_home/.bashrc
 
+dconf load / < dconf.txt
+
 source ~/.bashrc
 
 echo done
