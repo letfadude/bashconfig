@@ -2,7 +2,7 @@
 
 logfile="install.log"
 
-echo "Starting install script" > "$logfile"
+echo "Starting install script .." > "$logfile"
 
 packages=(git curl wget tilix bat tmux xsel wl-clipboard xclip clangd ripgrep latexmk zathura texlive-full)
 echo "install apt packages $packages ? {y/n}"
@@ -92,7 +92,7 @@ else
   echo "$addon installation skipped" | tee -a "$logfile"
 fi
 
-# Install tmux with catpuccin
+# Install tmux with catppuccin
 
 addon="tmux catppuccin theme"
 echo "install $addon? [y/n]"
@@ -160,3 +160,23 @@ else
 fi
 
 echo "*** INSTALLATION COMPLETE ***"
+
+echo "update configs ? [y/n]"
+read update
+
+if [ update != 'y' ]
+then
+  echo "update skipped -> use update.sh"
+  exit 0
+fi
+
+echo "*** UPDATING CONFIG ***"
+/bin/bash update.sh
+if [ $? -ne 0 ]
+then
+  echo "update failed try again <update.sh>"
+fi
+
+
+
+

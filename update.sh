@@ -3,10 +3,9 @@
 echo updating...
 
 config_path=$(pwd)
-cd ~
-user_home=$(pwd)
+user_home=$(eval echo ~) 
 
-cd -
+mkdir -p $user_home/.config
 
 # starship
 ln -sf $config_path/starship.toml $user_home/.config/starship.toml
@@ -17,13 +16,19 @@ else
   echo "starship config linked"
 fi
 
-ln -sf $config_path/nvim $user_home/.config/nvim
-
+rm -rf "$user_home/.config/nvim"
 if [ $? -ne 0 ]
 then
-  echo "ERR: nvim config not linked"
+  echo "ERR: nvim config could not be deleted"
 else 
   echo "nvim config linked"
+  ln -sf $config_path/nvim $user_home/.config/nvim
+  if [ $? -ne 0 ]
+  then
+    echo "ERR: nvim config not linked"
+  else 
+    echo "nvim config linked"
+  fi
 fi
 
 # Use new bashrc
