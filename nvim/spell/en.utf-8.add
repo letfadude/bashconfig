@@ -18,3 +18,7 @@ arduino
 cli
 configs
 CONFIG
+bashrc
+dconf
+config
+startship

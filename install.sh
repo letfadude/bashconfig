@@ -12,7 +12,7 @@ if [ $inst == 'y' ]
 then
   echo "*** UPDATING PACKAGE MANAGER ***" | tee -a "$logfile"
   sudo apt update >> "$logfile" 
-  sudo apt upgrade >> "$logfile"
+  sudo apt upgrade -y >> "$logfile"
   echo "*** INSTALLING APT PACKAGES ***" | tee -a "$logfile"
 
   for pkg in "${packages[@]}"; 
@@ -45,7 +45,7 @@ echo "install $addon? [y/n]"
 read inst
 if [ $inst == 'y' ]
 then
-  echo "*** INSTALLING TILIX COLOR SCHEMES ***" | tee -a "$logfile"
+  echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   git clone https://codeberg.org/SnowCode/tilix-colors.git
   mkdir -p ~/.config/tilix/schemes
   mv tilix-colors/*.json ~/.config/tilix/schemes
@@ -59,7 +59,7 @@ echo "install $addon? [y/n]"
 read inst
 if [ $inst == 'y' ]
 then
-  echo "*** INSTALLING JETBRAINS FONT ***" | tee -a "$logfile"
+  echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   # Install fonts
   mkdir -p ~/.local/share/fonts
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip -O ~/Downloads/JetBrainsMono.zip
@@ -73,8 +73,12 @@ echo "install $addon? [y/n]"
 read inst
 if [ $inst == 'y' ]
 then
-  echo "*** INSTALLING STARSHIP ***" | tee -a "$logfile"
+  echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   curl -sS https://starship.rs/install.sh | sh
+  if [ $? -ne 0 ]
+  then 
+    echo "installing addon [$addon] failed"
+  fi
 else 
   echo "$addon installation skipped" | tee -a "$logfile"
 fi
@@ -84,7 +88,7 @@ echo "install $addon? [y/n]"
 read inst
 if [ $inst == 'y' ]
 then
-  echo "*** INSTALLING BLE-NIGHTLY ***" | tee -a "$logfile"
+  echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   curl -L https://github.com/akinomyoga/ble.sh/releases/download/nightly/ble-nightly.tar.xz | tar xJf -
   bash ble-nightly/ble.sh --install ~/.local/share
   rm -rf ble-nightly
@@ -114,7 +118,7 @@ echo "install $addon? [y/n]"
 read inst
 if [ $inst == 'y' ]
 then
-  echo "*** INSTALLING NVIM ***" | tee -a "$logfile"
+  echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
   sudo rm -rf /opt/nvim-linux-x86_64
   sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
@@ -130,7 +134,7 @@ echo "install $addon? [y/n]"
 read inst
 if [ $inst == 'y' ]
 then
-  echo "*** INSTALLING GOLANG ***" | tee -a "$logfile"
+  echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
   sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz
   rm go1.25.5.linux-amd64.tar.gz
@@ -149,7 +153,7 @@ read inst
 if [ $inst == 'y' ]
 then
   # arduino support for vim
-  echo "*** INSTALLING ARDUINO_CLI ***" | tee -a "$logfile"
+  echo "*** INSTALLING [$addon] ***"| tee -a "$logfile"
   cd ~
   mkdir -p ~/arduino-cli
   cd ~/arduino-cli

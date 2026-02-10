@@ -16,6 +16,7 @@ else
   echo "starship config linked"
 fi
 
+# nvim 
 rm -rf "$user_home/.config/nvim"
 if [ $? -ne 0 ]
 then
@@ -31,7 +32,7 @@ else
   fi
 fi
 
-# Use new bashrc
+# bashrc
 ln -sf $config_path/.bashrc $user_home/.bashrc
 
 if [ $? -ne 0 ]
