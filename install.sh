@@ -1,14 +1,20 @@
 #!/bin/bash
 
 logfile="install.log"
+packages=(git curl wget tilix bat tmux xsel wl-clipboard xclip clangd ripgrep latexmk zathura texlive-full flatpak)
 
 echo "Starting install script .." > "$logfile"
+echo "apt packages: "
 
-packages=(git curl wget tilix bat tmux xsel wl-clipboard xclip clangd ripgrep latexmk zathura texlive-full)
+for pkg in "${packages[@]}";
+do 
+  echo -n " $pkg" 
+done
+echo 
 echo "install apt packages $packages ? {y/n}"
 read inst
 i=0
-if [ $inst == 'y' ]
+if [ "$inst" == 'y' ]
 then
   echo "*** UPDATING PACKAGE MANAGER ***" | tee -a "$logfile"
   sudo apt update >> "$logfile" 
@@ -31,9 +37,16 @@ then
 fi
 
 echo "*** INSTALLING $i APT PACKAGES DONE ***" | tee -a "$logfile"
+echo "add default flatpak repository ? [y/n]"
+read inst
+if [ "$inst" == 'y' ]
+do
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+done
+
 echo "proceed to addon installations ? [y/n]"
 read proceed
-if [ $proceed != 'y' ]
+if [ "$proceed" != 'y' ]
 then 
   echo "Addon installations skipped" | tee -a "$logfile"
   exit 0
@@ -43,7 +56,7 @@ echo "*** ADDONS INSTALLATION ***" | tee -a "$logfile"
 addon="tilix"
 echo "install $addon? [y/n]"
 read inst
-if [ $inst == 'y' ]
+if [ "$inst" == 'y' ]
 then
   echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   git clone https://codeberg.org/SnowCode/tilix-colors.git
@@ -57,7 +70,7 @@ fi
 addon="jetbrains-font"
 echo "install $addon? [y/n]"
 read inst
-if [ $inst == 'y' ]
+if [ "$inst" == 'y' ]
 then
   echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   # Install fonts
@@ -71,7 +84,7 @@ fi
 addon="starship"
 echo "install $addon? [y/n]"
 read inst
-if [ $inst == 'y' ]
+if [ "$inst" == 'y' ]
 then
   echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   curl -sS https://starship.rs/install.sh | sh
@@ -86,7 +99,7 @@ fi
 addon="ble-nighlty"
 echo "install $addon? [y/n]"
 read inst
-if [ $inst == 'y' ]
+if [ "$inst" == 'y' ]
 then
   echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   curl -L https://github.com/akinomyoga/ble.sh/releases/download/nightly/ble-nightly.tar.xz | tar xJf -
@@ -101,7 +114,7 @@ fi
 addon="tmux catppuccin theme"
 echo "install $addon? [y/n]"
 read inst
-if [ $inst == 'y' ]
+if [ "$inst" == 'y' ]
 then
   echo "*** SETTING TMUX COLOR SCHEME TO CATPPUCCIN ***" | tee -a "$logfile"
   mkdir -p ~/.config/tmux/plugins/catppuccin
@@ -116,7 +129,7 @@ fi
 addon="nvim"
 echo "install $addon? [y/n]"
 read inst
-if [ $inst == 'y' ]
+if [ "$inst" == 'y' ]
 then
   echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
@@ -132,7 +145,7 @@ addon="golang and golang-langserver"
 
 echo "install $addon? [y/n]"
 read inst
-if [ $inst == 'y' ]
+if [ "$inst" == 'y' ]
 then
   echo "*** INSTALLING [$addon] ***" | tee -a "$logfile"
   wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
@@ -141,6 +154,7 @@ then
 
   # golang support for vim
   echo "*** INSTALLING GOLANG SUPPORT FOR NVIM ***" | tee -a "$logfile"
+  go install golang.org/x/tools/gopls@latest
   go install github.com/nametake/golangci-lint-langserver@latest
   go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 else
@@ -150,7 +164,7 @@ fi
 addon="arduino-cli"
 echo "install $addon? [y/n]"
 read inst
-if [ $inst == 'y' ]
+if [ "$inst" == 'y' ]
 then
   # arduino support for vim
   echo "*** INSTALLING [$addon] ***"| tee -a "$logfile"
@@ -168,7 +182,7 @@ echo "*** INSTALLATION COMPLETE ***"
 echo "update configs ? [y/n]"
 read update
 
-if [ update != 'y' ]
+if [ "$update" != 'y' ]
 then
   echo "update skipped -> use update.sh"
   exit 0
@@ -180,7 +194,3 @@ if [ $? -ne 0 ]
 then
   echo "update failed try again <update.sh>"
 fi
-
-
-
-

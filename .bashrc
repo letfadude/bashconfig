@@ -93,6 +93,7 @@ alias la='ls -A'
 alias l='ls -CF'
 # alias cat='batcat'
 alias bat='batcat'
+alias shutdown='systemctl poweroff'
 
 
 # Add an "alert" alias for long running commands.  Use like so:
