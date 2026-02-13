@@ -23,8 +23,8 @@ if vim.env.WAYLAND_DISPLAY and executable("wl-copy") then
   vim.g.clipboard = {
     name = "wl-clipboard",
     copy = {
-      ["+"] = "wl-copy --foreground --type text/plain",
-      ["*"] = "wl-copy --foreground --primary --type text/plain",
+      ["+"] = "wl-copy",
+      ["*"] = "wl-copy",
     },
     paste = {
       ["+"] = "wl-paste --no-newline",
