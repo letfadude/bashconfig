@@ -12,19 +12,42 @@ vim.opt.relativenumber = true
 vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 -- CLIPBOARD 
+-- figure out what clipboard to use
+local function executable(cmd)
+  return vim.fn.executable(cmd) == 1
+end
+
 vim.g.clipboard = "unnamedplus"
-vim.g.clipboard = {
-  name = "wl-clipboard",
-  copy = {
-    ["+"] = "wl-copy",
-    ["*"] = "wl-copy",
-  },
-  paste = {
-    ["+"] = "wl-paste --no-newline",
-    ["*"] = "wl-paste --no-newline",
-  },
-  cache_enabled = 0,
-}
+if vim.env.WAYLAND_DISPLAY and executable("wl-copy") then
+  -- Wayland
+  vim.g.clipboard = {
+    name = "wl-clipboard",
+    copy = {
+      ["+"] = "wl-copy --foreground --type text/plain",
+      ["*"] = "wl-copy --foreground --primary --type text/plain",
+    },
+    paste = {
+      ["+"] = "wl-paste --no-newline",
+      ["*"] = "wl-paste --no-newline --primary",
+    },
+    cache_enabled = 0,
+  }
+
+elseif executable("xclip") then
+  -- X11
+  vim.g.clipboard = {
+    name = "xclip",
+    copy = {
+      ["+"] = "xclip -selection clipboard",
+      ["*"] = "xclip -selection primary",
+    },
+    paste = {
+      ["+"] = "xclip -selection clipboard -o",
+      ["*"] = "xclip -selection primary -o",
+    },
+    cache_enabled = 0,
+  }
+end
 vim.keymap.set("v", "Y", '"+y')
 
 -- EXIT TERMINAL WITH ESC
