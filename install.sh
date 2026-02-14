@@ -40,9 +40,9 @@ echo "*** INSTALLING $i APT PACKAGES DONE ***" | tee -a "$logfile"
 echo "add default flatpak repository ? [y/n]"
 read inst
 if [ "$inst" == 'y' ]
-do
+then
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-done
+fi
 
 echo "proceed to addon installations ? [y/n]"
 read proceed
