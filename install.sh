@@ -1,7 +1,7 @@
 #!/bin/bash
 
 logfile="install.log"
-packages=(git curl wget tilix bat tmux xsel wl-clipboard xclip clangd ripgrep latexmk zathura texlive-full flatpak)
+packages=(git curl wget tilix bat tmux xsel wl-clipboard xclip clangd ripgrep latexmk zathura texlive-full flatpak openvpn)
 
 echo "Starting install script .." > "$logfile"
 echo "apt packages: "
