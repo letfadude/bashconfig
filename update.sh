@@ -7,6 +7,13 @@ user_home=$(eval echo ~)
 
 mkdir -p $user_home/.config
 
+echo "setting git config"
+git config --global pull.rebase false
+git config --global user.name "fadude"
+git config --global user.email "wallneralex7789@gmail.com"
+git config --global alias.lol "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global core.editor "vi"
+
 # starship
 ln -sf $config_path/starship.toml $user_home/.config/starship.toml
 if [ $? -ne 0 ]
