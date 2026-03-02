@@ -6,9 +6,8 @@ starship
 nighlty
 ble
 tmux
-#atpuccin
 catppuccin
-catpuccin/!
+catpuccin
 addon
 neovim
 nvim
@@ -29,13 +28,11 @@ uploadform
 html
 png
 filename
-<<<<<<< Updated upstream
 d20
 const
 8
 d8
-=======
 fadude
 wallneralex7789
 gmail
->>>>>>> Stashed changes
+addon
