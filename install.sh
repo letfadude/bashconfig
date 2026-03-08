@@ -17,15 +17,15 @@ i=0
 if [ "$inst" == 'y' ]
 then
   echo "*** UPDATING PACKAGE MANAGER ***" | tee -a "$logfile"
-  sudo apt update >> "$logfile" 
-  sudo apt upgrade -y >> "$logfile"
+  sudo apt update 2>&1 >> "$logfile" 
+  sudo apt upgrade -y 2>&1 >> "$logfile"
   echo "*** INSTALLING APT PACKAGES ***" | tee -a "$logfile"
 
   for pkg in "${packages[@]}"; 
   do 
     ((i++))
     echo "** installing $pkg **" | tee -a "$logfile"
-    sudo apt install $pkg -y >> "$logfile"
+    sudo apt install $pkg -y 2>&1 >> "$logfile"
     if [ $? -ne 0 ]
     then
       echo "*** INSTALL FAILED [$pkg]***" | tee -a "$logfile"
