@@ -37,6 +37,7 @@ local servers = {
   clangd = {},
   golangci_lint_ls = {},
   lua_ls = {},
+  texlab = {},
 }
 
 for server, config in pairs(servers) do

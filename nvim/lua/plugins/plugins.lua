@@ -109,8 +109,8 @@ return {
       vim.lsp.config["pyright"] = {}
       vim.lsp.enable("pyright")
 
-       vim.lsp.config["texlab"] = {}
-       vim.lsp.enable("texlab")
+      vim.lsp.config["texlab"] = {}
+      vim.lsp.enable("texlab")
     end
   },
   {"hrsh7th/nvim-cmp"},
