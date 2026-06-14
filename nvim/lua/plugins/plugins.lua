@@ -143,7 +143,7 @@ return {
           "lua", "go", "python", "c", "java",
           "javascript", "typescript", "json", "yaml",
           "html", "css", "bash", "rust", "toml",
-          "dockerfile", "vim", "regex",
+          "dockerfile", "vim", "regex", "erlang", "elixir",
         },
         indent = { enable = true },
         highlight = { enable = true },
@@ -160,6 +160,20 @@ return {
       vim.g.vimtex_compiler_method = "latexmk"
     end
   },
-
-  -- Add more plugins here
+  {
+  "elixir-tools/elixir-tools.nvim",
+  version = "*",
+  ft = { "elixir", "eelixir", "heex" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
+  opts = {
+    elixirls = {
+      enable = true,
+    },
+    nextls = {
+      enable = true,
+    },
+  },
+}
 }
