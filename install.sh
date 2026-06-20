@@ -51,6 +51,7 @@ then
   echo "Addon installations skipped" | tee -a "$logfile"
   exit 0
 fi
+%lets see
   
 echo "*** ADDONS INSTALLATION ***" | tee -a "$logfile"
 addon="tilix"
