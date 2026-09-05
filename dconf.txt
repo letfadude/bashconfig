@@ -99,7 +99,7 @@ name='tilix'
 
 [org/cinnamon/desktop/keybindings/custom-keybindings/custom1]
 binding=['<Primary><Alt>b']
-command='/usr/bin/google-chrome-stable %U'
+command='/usr/bin/brave-browser %U'
 name='chrome'
 
 [org/cinnamon/desktop/keybindings/media-keys]
@@ -386,7 +386,7 @@ name='tilix'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
 binding='<Control><Alt>b'
-command='/usr/bin/google-chrome-stable %U'
+command='/usr/bin/brave-browser %U'
 name='chrome'
 
 [org/gnome/settings-daemon/plugins/xsettings]
