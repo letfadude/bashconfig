@@ -18,7 +18,9 @@
 - install apt dependencies:
     - sudo apt install gpg python3-ykman yubikey-manager scdaemon  pcsc-tools
 - create gpg key
+    - gpg --full-generate-key
     - RSA 2048 >=10y
+    - gpg --export-secret-key --armor <keyID> > gpg_backup.asc
 - setup gopass
     - gpg --list-secret-keys
     - gopass init <keyID>
@@ -61,15 +63,42 @@ sudo systemctl restart pcscd && gpgconf --kill all
 ## gpg & card setup
 
 - gpg --card-status
+- start with backup key
 - move subkeys to card
     - gpg --list-secret-keys
     - gpg --edit-key <keyID>
     - gpg 
         - addkey (: RSA & SIGN)
         - addkey (: RSA & ENC)
+        - addkey (: RSA & SIGN)
         - save
+        - backup again !!! (b4 moving keys -> leaves only stubs)
         - key 1
         - keytocard -> right slot
         - key 2 (maybe have to unselect key 1)
         - keytocard -> same
         - save
+- reset keys: 
+    - gpg --delete-secret-and-public-key 32DC51D27D62F25B379850F0B28EEB1D769A6A04
+    - gpg import <backup_file>
+    - gpg --list-secret-keys
+    - gpg --edit-key <keyID>
+    - gpg 
+        - key 1
+        - keytocard -> right slot
+        - key 2 (maybe have to unselect key 1)
+        - keytocard -> same
+        - save
+
+## Note: 
+if main key is lost -> insert backup card 
+```shell
+gpg --delete-secret-and-public-key 32DC51D27D62F25B379850F0B28EEB1D769A6A04
+
+gpg --import public-key.asc
+
+gpg --card-status   
+```
+
+this should recreate the stubs 
+
