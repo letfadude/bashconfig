@@ -17,50 +17,19 @@
     - or https://github.com/gopasspw/gopass directly
 - install apt dependencies:
     - sudo apt install gpg python3-ykman yubikey-manager scdaemon  pcsc-tools
-- create gpg key
-    - gpg --full-generate-key
-    - RSA 2048 >=10y
-    - gpg --export-secret-key --armor <keyID> > gpg_backup.asc
-- setup gopass
-    - gpg --list-secret-keys
-    - gopass init <keyID>
-    - gopass config -> look for mount path
-    - cd <mount-path>
-    - ls-remote <server+path> no output = OK
-    - git remote add origin <server+path>
-    - git pull origin main/master
 
-** gopass should now be setup with remote ** 
+## create gpg keys and yubikey setup
+### create gpg key
 
-to test it 
-
-- gopass insert hello/test
-- gopass sync
-- gopass show hello/test
-
-## setup yubikey
-
+- gpg --full-generate-key
+    - RSA 2048 
+- create 3 subkeys (also RSA)
 - gpg --list-secret-keys
-- backup
-    - gpg --export-secret-key --armor > gpg_backup.asc
-    - chmod 600 gpg_backup.asc
+- gpg --export-secret-key --armor <keyID> > gpg_backup.asc
+- chmod 600 gpg_backup.asc
+- gpg --export --armor <kid> > gpg.pub.asc
 
-## setup gpg to listen to the right port/smartcard if there are two
-
-```shell
-# insert the key and look for it (Reader: <card-name>)
-pcsc_scan
-# if more than one smart card reader
-cat > ~/.gnupg/scdaemon.conf << 'EOF'
-disable-ccid
-pcsc-shared
-reader-port "<card-name>"
-EOF
-# reset gpg
-sudo systemctl restart pcscd && gpgconf --kill all
-```
-
-## gpg & card setup
+## gpg to card setup
 
 - gpg --card-status
 - start with backup key
@@ -79,7 +48,7 @@ sudo systemctl restart pcscd && gpgconf --kill all
         - keytocard -> same
         - save
 - reset keys: 
-    - gpg --delete-secret-and-public-key 32DC51D27D62F25B379850F0B28EEB1D769A6A04
+    - gpg --delete-secret-and-public-key <kid>
     - gpg import <backup_file>
     - gpg --list-secret-keys
     - gpg --edit-key <keyID>
@@ -90,10 +59,46 @@ sudo systemctl restart pcscd && gpgconf --kill all
         - keytocard -> same
         - save
 
+## Setup gopass
+
+- setup gopass
+    - gpg --list-secret-keys
+    - gopass init <keyID>
+    - gopass config -> look for mount path
+    - cd <mount-path>
+    - git ls-remote <server+path> no output = OK
+    - git remote add origin <server+path>
+    - git pull/push origin main/master
+
+** gopass should now be setup with remote ** 
+
+to test it 
+
+- gopass insert hello/test
+- gopass sync
+- gopass show hello/test
+
+
+## setup gpg to listen to the right port/smartcard if there are two
+
+```shell
+# insert the key and look for it (Reader: <card-name>)
+pcsc_scan
+# if more than one smart card reader
+cat > ~/.gnupg/scdaemon.conf << 'EOF'
+disable-ccid
+pcsc-shared
+reader-port "<card-name>"
+EOF
+# reset gpg
+sudo systemctl restart pcscd && gpgconf --kill all
+```
+
+
 ## Note: 
 if main key is lost -> insert backup card 
 ```shell
-gpg --delete-secret-and-public-key 32DC51D27D62F25B379850F0B28EEB1D769A6A04
+gpg --delete-secret-and-public-key <kid>
 
 gpg --import public-key.asc
 
