@@ -6,7 +6,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
   -- LSP keymaps
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "G", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
   vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
@@ -47,6 +47,7 @@ local servers = {
   golangci_lint_ls = {},
   lua_ls = {},
   texlab = {},
+  rust_analyzer = {},
 }
 
 for server, config in pairs(servers) do

@@ -20,6 +20,39 @@ return {
   --   end
   -- },
   {
+    "Saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    opts = {
+      completion = {
+        crates = {
+          enabled = true,
+        },
+      },
+      lsp = {
+        enabled = true,
+        actions = true,
+        completion = true,
+        hover = true,
+      },
+    },
+  },
+  {
+    "mason-org/mason.nvim",
+    opts = {},
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "rust_analyzer",
+      },
+    },
+    dependencies = {
+      "mason-org/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+  },
+  {
     "loctvl842/monokai-pro.nvim",
     lazy = false,
     priority = 1000,
@@ -92,26 +125,30 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    config = function()
-      -- Go lint
-      vim.lsp.config["golangci_lint_ls"] = {}
-      vim.lsp.enable("golangci_lint_ls")
-
-      -- Go language server
-      vim.lsp.config["gopls"] = {}
-      vim.lsp.enable("gopls")
-
-      -- Clangd (C/C++)
-      vim.lsp.config["clangd"] = {}
-      vim.lsp.enable("clangd")
-
-      -- Pyright (Python)
-      vim.lsp.config["pyright"] = {}
-      vim.lsp.enable("pyright")
-
-      vim.lsp.config["texlab"] = {}
-      vim.lsp.enable("texlab")
-    end
+    -- config = function()
+    --   -- Go lint
+    --   vim.lsp.config["golangci_lint_ls"] = {}
+    --   vim.lsp.enable("golangci_lint_ls")
+    --
+    --   -- Go language server
+    --   vim.lsp.config["gopls"] = {}
+    --   vim.lsp.enable("gopls")
+    --
+    --   -- Clangd (C/C++)
+    --   vim.lsp.config["clangd"] = {}
+    --   vim.lsp.enable("clangd")
+    --
+    --   -- Pyright (Python)
+    --   vim.lsp.config["pyright"] = {}
+    --   vim.lsp.enable("pyright")
+    --
+    --   vim.lsp.config["texlab"] = {}
+    --   vim.lsp.enable("texlab")
+    --
+    --   -- rust
+    --   vim.lsp.config["rust_analyzer"] = {}
+    --   vim.lsp.enable("rust_analyzer")
+    -- end
   },
   {"hrsh7th/nvim-cmp"},
   {"hrsh7th/cmp-nvim-lsp"},
@@ -143,7 +180,7 @@ return {
           "lua", "go", "python", "c", "java",
           "javascript", "typescript", "json", "yaml",
           "html", "css", "bash", "rust", "toml",
-          "dockerfile", "vim", "regex", "erlang", "elixir",
+          "dockerfile", "vim", "regex", "erlang", "elixir","rust", "ron",
         },
         indent = { enable = true },
         highlight = { enable = true },

@@ -29,7 +29,7 @@
 - chmod 600 gpg_backup.asc
 - gpg --export --armor <kid> > gpg.pub.asc
 
-## gpg to card setup
+### gpg to card setup
 
 - gpg --card-status
 - start with backup key
@@ -98,6 +98,8 @@ sudo systemctl restart pcscd && gpgconf --kill all
 ## Note: 
 if main key is lost -> insert backup card 
 ```shell
+# try whith backup key in
+gopass show some/thing
 gpg --delete-secret-and-public-key <kid>
 
 gpg --import public-key.asc

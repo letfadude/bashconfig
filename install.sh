@@ -1,10 +1,12 @@
 #!/bin/bash
 
 logfile="install.log"
-packages=(git curl wget tilix bat tmux xsel wl-clipboard xclip clangd ripgrep latexmk zathura texlive-full texlab flatpak openvpn podman erlang rebar3 elixir build-essential mosquitto mosquitto-clients wireguard wireguard-tools)
+packages=(git curl wget tilix bat tmux xsel wl-clipboard xclip clangd ripgrep latexmk zathura texlive-full texlab flatpak openvpn podman erlang rebar3 elixir build-essential mosquitto mosquitto-clients wireguard wireguard-tools rust-analyzer)
 
 echo "Starting install script .." > "$logfile"
 echo "apt packages: "
+
+thisDir = $(pwd)
 
 for pkg in "${packages[@]}";
 do 
@@ -181,6 +183,19 @@ else
   echo "$addon installation skipped" | tee -a "$logfile"
 fi
 
+cd "$thisDir"
+
+addon="rustup"
+echo "install $addon? [y/n]"
+read inst
+if [ "$inst" == 'y' ]
+then
+  # arduino support for vim
+  echo "*** INSTALLING [$addon] ***"| tee -a "$logfile"
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 2>&1 >> "$logfile"
+else
+  echo "$addon installation skipped" | tee -a "$logfile"
+fi
 echo "*** INSTALLATION COMPLETE ***"
 
 echo "update configs ? [y/n]"
@@ -191,6 +206,7 @@ then
   echo "update skipped -> use update.sh"
   exit 0
 fi
+
 
 echo "*** UPDATING CONFIG ***"
 /bin/bash ./update.sh

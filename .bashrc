@@ -143,3 +143,4 @@ export PATH=$PATH:$(go env GOPATH)/bin
 #export LD_LIBRARY_PATH=instantclient_21_12:$LD_LIBRARY_PATH
 #export PATH=$LD_LIBRARY_PATH:$PATH
 
+. "$HOME/.cargo/env"
