@@ -1,0 +1,86 @@
+% ===== Tokyo Night Dark Theme =====
+
+\usepackage[dvipsnames,svgnames]{xcolor}
+
+% --- Palette ---
+\definecolor{tn-bg}{HTML}{1A1B26}
+\definecolor{tn-storm}{HTML}{24283B}
+\definecolor{tn-line}{HTML}{292E42}
+\definecolor{tn-border}{HTML}{3B4261}
+\definecolor{tn-comment}{HTML}{565F89}
+\definecolor{tn-fg}{HTML}{C0CAF5}
+\definecolor{tn-fg-dark}{HTML}{A9B1D6}
+\definecolor{tn-blue}{HTML}{7AA2F7}
+\definecolor{tn-cyan}{HTML}{7DCFFF}
+\definecolor{tn-green}{HTML}{9ECE6A}
+\definecolor{tn-magenta}{HTML}{BB9AF7}
+\definecolor{tn-orange}{HTML}{FF9E64}
+\definecolor{tn-yellow}{HTML}{E0AF68}
+\definecolor{tn-red}{HTML}{F7768E}
+\definecolor{tn-teal}{HTML}{1ABC9C}
+
+% --- Page background (executed in body.tex) ---
+\AddToHook{shipout/background}{\relax}
+
+% --- Headings ---
+\usepackage{titlesec}
+\titleformat{\section}{\color{tn-yellow}\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\color{tn-yellow}\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\color{tn-yellow}\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titlespacing*{\section}{0pt}{1.5ex plus .2ex minus .2ex}{1ex plus .2ex minus .2ex}
+\titlespacing*{\subsection}{0pt}{1.2ex plus .2ex minus .2ex}{.8ex plus .2ex minus .2ex}
+\titlespacing*{\subsubsection}{0pt}{1ex plus .2ex minus .2ex}{.6ex plus .2ex minus .2ex}
+
+% --- Body text ---
+\AtBeginDocument{\color{tn-fg}}
+
+\let\oldtextbf\textbf
+\renewcommand{\textbf}[1]{\oldtextbf{\color{tn-fg}#1}}
+\let\oldtextit\textit
+\renewcommand{\textit}[1]{\oldtextit{\color{tn-fg}#1}}
+
+% --- Code blocks ---
+\definecolor{shadecolor}{HTML}{24283B}
+
+% --- Inline code ---
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{\oldtexttt{\color{tn-cyan}#1}}
+
+% --- Tables ---
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\arrayrulecolor{tn-border}
+\renewcommand{\arraystretch}{1.3}
+
+% --- Lists ---
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=1.5em, itemsep=2pt, parsep=0pt}
+\setlist[enumerate]{leftmargin=1.5em, itemsep=2pt, parsep=0pt}
+
+% --- Horizontal rule ---
+\renewcommand{\hrulefill}{\color{tn-border}\rule{\fill}{0.4pt}}
+
+% --- Footer ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\color{tn-comment}\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% --- Spacing ---
+\usepackage{setspace}
+\setstretch{1.15}
+
+% --- Links ---
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=tn-blue,
+  urlcolor=tn-cyan,
+  citecolor=tn-magenta,
+  bookmarks=true,
+  bookmarksopen=true,
+  pdfstartview=FitH
+}   

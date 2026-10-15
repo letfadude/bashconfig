@@ -1,0 +1,15 @@
+to: pdf
+pdf-engine: xelatex
+highlight-style: /home/alex/.local/share/pandoc/defaults/tokyo-night.theme
+metadata:
+  geometry: "margin=1cm"
+  mainfont: "DejaVu Sans"
+  monofont: "JetBrainsMono Nerd Font Mono"
+  fontsize: 11pt
+  colorlinks: true
+  linkcolor: "Cyan"
+  urlcolor: "Cyan"
+include-in-header:
+  - /home/alex/.local/share/pandoc/defaults/style.tex
+include-before-body:
+  - /home/alex/.local/share/pandoc/defaults/body.tex   

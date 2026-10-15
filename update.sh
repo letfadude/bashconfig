@@ -39,6 +39,9 @@ else
   fi
 fi
 
+# pandoc template
+ln -sf $config_path/pandoc_defaults $user_home/.local/share/pandoc/defaults
+
 # bashrc
 ln -sf $config_path/.bashrc $user_home/.bashrc
 
