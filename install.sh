@@ -8,6 +8,8 @@ echo "apt packages: "
 
 thisDir = $(pwd)
 
+sudo chmod u+x $(pwd)/*.sh
+
 for pkg in "${packages[@]}";
 do 
   echo -n " $pkg" 
@@ -19,15 +21,15 @@ i=0
 if [ "$inst" == 'y' ]
 then
   echo "*** UPDATING PACKAGE MANAGER ***" | tee -a "$logfile"
-  sudo apt update 2>&1 >> "$logfile" 
-  sudo apt upgrade -y 2>&1 >> "$logfile"
+  sudo apt update 2>/dev/null >> "$logfile" 
+  sudo apt upgrade -y 2>/dev/null >> "$logfile"
   echo "*** INSTALLING APT PACKAGES ***" | tee -a "$logfile"
 
   for pkg in "${packages[@]}"; 
   do 
     ((i++))
     echo "** installing $pkg **" | tee -a "$logfile"
-    sudo apt install $pkg -y 2>&1 >> "$logfile"
+    sudo apt install $pkg -y >> "$logfile" 2>&1 
     if [ $? -ne 0 ]
     then
       echo "*** INSTALL FAILED [$pkg]***" | tee -a "$logfile"
